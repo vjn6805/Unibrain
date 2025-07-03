@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:unibrain/features/authentication/authentication_main.dart';
+import 'package:unibrain/features/authentication/login_screen.dart';
 import 'package:unibrain/features/authentication/otp_screen.dart';
 import 'package:unibrain/features/authentication/signup_screen.dart';
 import 'package:unibrain/helper/auth_service.dart';
@@ -17,7 +17,7 @@ final GoRouter appRouter = GoRouter(
         final singup=loc=='/signup-page';
 
         if(!loggedIn && !(logginIn || verifyingOtp || singup)){
-            return '/auth-main';
+            return '/login-page';
         }
 
         if(logginIn && loggedIn) {
@@ -26,7 +26,7 @@ final GoRouter appRouter = GoRouter(
     },
 
     routes: [
-      GoRoute(path: '/auth-main',builder: (_,__)=>AuthenticationMain()),
+      GoRoute(path: '/login-page',builder: (_,__)=>LoginScreen()),
         GoRoute(path: '/signup-page',builder: (_,__)=>SignupScreen()),
         GoRoute(path: '/otp-screen',builder: (_,__)=>OtpScreen()),
     ],);
