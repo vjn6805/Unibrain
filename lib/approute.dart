@@ -23,6 +23,8 @@ final GoRouter appRouter = GoRouter(
         if(logginIn && loggedIn) {
             //TODO: ADD home screen route
         }
+
+        return null;
     },
 
     routes: [

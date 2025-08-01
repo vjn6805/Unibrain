@@ -3,6 +3,5 @@ import 'package:unibrain/app.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-
   runApp(MyApp());
 }
