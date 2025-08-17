@@ -1,7 +1,10 @@
+import 'package:email_otp/email_otp.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:unibrain/helper/auth_service.dart';
+import 'package:unibrain/helper/database_helper.dart';
+import 'package:unibrain/helper/helper_functions.dart';
 import 'package:unibrain/helper/image_string.dart';
-
 import '../widgets/divider_widget.dart';
 import '../widgets/google_auth_widget.dart';
 import '../widgets/login_signup_toggle_widget.dart';
@@ -14,10 +17,15 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  GlobalKey formKey = GlobalKey();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   bool obscureText = true;
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  late final DatabaseHelper databaseHelper;
+
+  void onLoginButtonClicked() {
+    DatabaseHelper.instance.handleLogin(emailController.text, passwordController.text, context, formKey);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: ()=>onLoginButtonClicked(),
                     child: Text(
                       "Login",
                       style: Theme.of(

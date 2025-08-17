@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:unibrain/features/authentication/login_screen.dart';
 import 'package:unibrain/features/authentication/otp_screen.dart';
 import 'package:unibrain/features/authentication/signup_screen.dart';
+import 'package:unibrain/features/home/home_screen.dart';
 import 'package:unibrain/helper/auth_service.dart';
 
 final GoRouter appRouter = GoRouter(
@@ -31,4 +32,6 @@ final GoRouter appRouter = GoRouter(
       GoRoute(path: '/login-page',builder: (_,__)=>LoginScreen()),
         GoRoute(path: '/signup-page',builder: (_,__)=>SignupScreen()),
         GoRoute(path: '/otp-screen',builder: (_,__)=>OtpScreen()),
+        GoRoute(path: '/home-screen',builder: (_,__)=>HomeScreen())
+        
     ],);

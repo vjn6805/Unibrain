@@ -13,10 +13,9 @@ class AuthService extends ValueNotifier<bool>{
 
   bool get isInitialized => _isInitialized;
 
-  Future<void> login(String email,String password,String name) async{
+  Future<void> login(String email,String password) async{
     await _secureStorage.write(key: "email", value: email);
     await _secureStorage.write(key: "password", value: password);
-    await _secureStorage.write(key: "name", value: name);
     notifyListeners();
   }
 
@@ -31,14 +30,12 @@ class AuthService extends ValueNotifier<bool>{
   Future<void> logout() async{
     await _secureStorage.delete(key: 'email');
     await _secureStorage.delete(key: 'password');
-    await _secureStorage.delete(key: 'name');
     value=false;
   }
 
   //getter methods
   Future<String?> getEmail()=>_secureStorage.read(key: 'email');
   Future<String?> getPassword()=>_secureStorage.read(key: 'password');
-  Future<String?> getName()=>_secureStorage.read(key: 'name');
 
 
 }
